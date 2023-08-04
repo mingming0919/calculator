@@ -1,6 +1,6 @@
-let firstNumber = undefined;
-let secondNumber = undefined;
-let operationSymbol = undefined;
+let firstNumber = "";
+let secondNumber = "";
+let operationSymbol = "";
 let hasOperationSymbol = false;
 
 const mainScreen = document.querySelector("#mainScreen");
@@ -8,18 +8,20 @@ const topScreen = document.querySelector("#topScreen");
 const numberButtons = document.querySelectorAll("#numbers");
 const operationSymbolButtons = document.querySelectorAll("#operationSymbol");
 const equalButton = document.querySelector("#equal");
+const clearButton = document.querySelector("#clearButton");
+const delButton = document.querySelector("#delButton");
 
 let displayValue = "";
 
 //on click handler for number buttons
 numberButtons.forEach((button) => {
   button.addEventListener("click", function (val) {
-
     if (hasOperationSymbol === true) {
-        displayValue = 0;
-      }
-    
-      displayValue = displayValue + val.target.textContent;
+      displayValue = "";
+      hasOperationSymbol = false;
+    }
+
+    displayValue = displayValue + val.target.textContent;
 
     displayOnMainScreen(displayValue);
   });
@@ -28,27 +30,44 @@ numberButtons.forEach((button) => {
 //on click handler for operation symbols
 operationSymbolButtons.forEach((button) => {
   button.addEventListener("click", function (val) {
-    firstNumber = parseInt(displayValue);
-    operationSymbol = val.target.textContent;
-    hasOperationSymbol = true;
-    displayOnTopScreen(displayValue + " " + val.target.textContent);
+    if (mainScreen.textContent != "") {
+      firstNumber = parseInt(displayValue);
+      operationSymbol = val.target.textContent;
+      hasOperationSymbol = true;
+
+      displayOnTopScreen(displayValue + " " + val.target.textContent);
+    }
   });
 });
 
 //equal button login
 equalButton.addEventListener("click", function () {
   secondNumber = parseInt(displayValue);
-//   console.log(firstNumber);
-//   console.log(operationSymbol);
-//   console.log(secondNumber);
-  displayOnTopScreen(topScreen.textContent + " " + mainScreen.textContent + " =");
-  displayOnMainScreen(operate(operationSymbol, firstNumber, secondNumber));
-  
+
+  displayOnTopScreen(
+    topScreen.textContent + " " + mainScreen.textContent + " ="
+  );
+
+  check2ndNumIfDivision(secondNumber, operationSymbol);
+
+  let result = operate(operationSymbol, firstNumber, secondNumber);
+  if (result.toString().length > 4) {
+    result = Number(result.toPrecision(3));
+  }
+
+  displayOnMainScreen(result);
 });
 
-//Console Testing
-// console.log(operate(operationSymbol, firstNumber, secondNumber));
-// console.log(numberArray);
+//clear button login
+clearButton.addEventListener("click", clearCalc);
+
+//del button login
+delButton.addEventListener("click", function () {
+    let str = mainScreen.textContent;
+    str = str.substring(0, str.length - 1);
+    displayValue = str;
+    mainScreen.textContent = str;
+  });
 
 // FUNCTIONS
 function add(a, b) {
@@ -85,4 +104,23 @@ function displayOnMainScreen(displayValue) {
 
 function displayOnTopScreen(displayValue) {
   return (topScreen.textContent = displayValue);
+}
+
+function clearCalc() {
+  firstNumber = "";
+  secondNumber = "";
+  operationSymbol = "";
+  hasOperationSymbol = false;
+  displayValue = "";
+  mainScreen.textContent = "";
+  topScreen.textContent = "";
+}
+
+function check2ndNumIfDivision(num, operationSymbol) {
+  if (num === 0) {
+    if (operationSymbol === "/") {
+      alert("Cannot divide with 0");
+      clearCalc();
+    }
+  }
 }
