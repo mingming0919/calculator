@@ -51,9 +51,14 @@ equalButton.addEventListener("click", function () {
   check2ndNumIfDivision(secondNumber, operationSymbol);
 
   let result = operate(operationSymbol, firstNumber, secondNumber);
-  if (result.toString().length > 4) {
-    result = Number(result.toPrecision(3));
+
+  let [integerPart, decimalPart] = result.toString().split(".");
+
+  if (decimalPart && decimalPart.length > 4) {
+    decimalPart = Number(decimalPart).toPrecision(3);
   }
+
+  result = parseFloat(integerPart + (decimalPart ? "." + decimalPart : ""));
 
   displayOnMainScreen(result);
 });
@@ -63,11 +68,11 @@ clearButton.addEventListener("click", clearCalc);
 
 //del button login
 delButton.addEventListener("click", function () {
-    let str = mainScreen.textContent;
-    str = str.substring(0, str.length - 1);
-    displayValue = str;
-    mainScreen.textContent = str;
-  });
+  let str = mainScreen.textContent;
+  str = str.substring(0, str.length - 1);
+  displayValue = str;
+  mainScreen.textContent = str;
+});
 
 // FUNCTIONS
 function add(a, b) {
@@ -79,7 +84,14 @@ function minus(a, b) {
 }
 
 function multiply(a, b) {
-  return a * b;
+  const result = a * b;
+  const threshold = 100000;
+
+  if (Math.abs(result) > threshold) {
+    return result.toFixed(0);
+  }
+
+  return result;
 }
 
 function divide(a, b) {
