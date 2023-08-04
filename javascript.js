@@ -14,7 +14,14 @@ let displayValue = "";
 //on click handler for number buttons
 numberButtons.forEach((button) => {
   button.addEventListener("click", function (val) {
-    displayOnMainScreen(val.target.textContent);
+
+    if (hasOperationSymbol === true) {
+        displayValue = 0;
+      }
+    
+      displayValue = displayValue + val.target.textContent;
+
+    displayOnMainScreen(displayValue);
   });
 });
 
@@ -72,13 +79,8 @@ function operate(operationSymbol, firstNumber, secondNumber) {
   }
 }
 
-function displayOnMainScreen(num) {
-  if (hasOperationSymbol === true) {
-    displayValue = 0;
-  }
-
-  displayValue = displayValue + num;
-  return (mainScreen.textContent = parseInt(displayValue));
+function displayOnMainScreen(displayValue) {
+  return (mainScreen.textContent = displayValue);
 }
 
 function displayOnTopScreen(displayValue) {
