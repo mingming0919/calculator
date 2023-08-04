@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calc">
+      <div class="top screen" id="topScreen"></div>
+      <div class="main screen" id="mainScreen"></div>
+
+      <div class="buttonsContainer">
+        <div class="buttonRow">
+          <div class="button main clearButton" id="clearButton">C</div>
+          <div class="button main delButton" id="delButton"><-</div>
+          <div class="button main blank" id="blank"></div>
+
+          <div class="button main divide" id="operationSymbol">/</div>
+        </div>
+
+        <div class="buttonRow">
+          <div class="button accent 7" id="numbers">7</div>
+          <div class="button accent 8" id="numbers">8</div>
+          <div class="button accent 9" id="numbers">9</div>
+
+          <div class="button main multiply" id="operationSymbol">x</div>
+        </div>
+
+        <div class="buttonRow">
+          <div class="button accent 4" id="numbers">4</div>
+          <div class="button accent 5" id="numbers">5</div>
+          <div class="button accent 6" id="numbers">6</div>
+
+          <div class="button main minus" id="operationSymbol">-</div>
+        </div>
+
+        <div class="buttonRow">
+          <div class="button accent 1" id="numbers">1</div>
+          <div class="button accent 2" id="numbers">2</div>
+          <div class="button accent 3" id="numbers">3</div>
+
+          <div class="button main add" id="operationSymbol">+</div>
+        </div>
+
+        <div class="buttonRow">
+          <div class="button accent blank" id="blank"></div>
+          <div class="button accent 0" id="numbers">0</div>
+          <div class="button accent dot" id="dot">.</div>
+
+          <div class="button main equal" id="equal">=</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="javascript.js"></script>
+  </body>
+</html>

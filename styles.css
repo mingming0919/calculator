@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    font-family: Roboto;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #ECEFF4;
+}
+
+.calc {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.calc .screen {
+    border: 2px solid black;
+    margin: 20px;
+    font-size: 25px;
+    text-align: end;
+    font-weight: 500;
+    height: 32.5px;
+}
+
+.calc .main {
+    font-size: 50px;
+    font-weight: 700;
+    height: 65px;
+}
+
+.calc .buttonsContainer {
+    margin: 20px;
+    padding-bottom: 20px;
+}
+
+.calc .buttonsContainer .buttonRow {
+    display: flex;
+    justify-content: start;
+}
+
+.calc .buttonsContainer .buttonRow .button {
+    border: 1px solid white;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.calc .buttonsContainer .buttonRow .button:hover {
+    font-size: 28px;
+}
+
+.calc .buttonsContainer .buttonRow .main {
+    background-color: #2E3440;
+    color: white;
+}
+
+.calc .buttonsContainer .buttonRow .accent {
+    background-color: #4C566A;
+    color: white;
+}
+
+.calc .buttonsContainer .buttonRow .clearButton {
+    background-color: #BF616A;
+}
