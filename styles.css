@@ -7,7 +7,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #eceff4;
+  background-color: #2E3440;
+}
+
+.header {
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.header span {
+    color: #729ed3;
 }
 
 .calc {
@@ -81,6 +92,7 @@ body {
 .footer {
     margin-top: 50px;
     font-weight: 500;
+    color: white;
 }
 
 /* Media Queries */
