@@ -31,11 +31,11 @@ numberButtons.forEach((button) => {
 operationSymbolButtons.forEach((button) => {
   button.addEventListener("click", function (val) {
     if (mainScreen.textContent != "") {
-      firstNumber = parseInt(displayValue);
+      firstNumber = parseInt(mainScreen.textContent);
       operationSymbol = val.target.textContent;
       hasOperationSymbol = true;
 
-      displayOnTopScreen(displayValue + " " + val.target.textContent);
+      displayOnTopScreen(mainScreen.textContent + " " + val.target.textContent);
     }
   });
 });
